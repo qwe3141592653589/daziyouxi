@@ -32,7 +32,7 @@ everynum = 0
 #预备主程序
 import random
 import sys
-print('欢迎使用打字游戏v1.0.1 韩硕专享版')
+print('欢迎使用打字游戏v1.0')
 print('注意：大小写敏感，游玩前检查caps lock的状态')
 m1 = input('生成类型 1.仅小写 2.仅大写 3.仅数字 4.数字+大写 5.数字+小写 6.全混 7.大小写混合')
 m2 = input('生成模式 1.有限 2.无限')
