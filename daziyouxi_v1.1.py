@@ -65,7 +65,7 @@ if m2 == '1':
     m2_sys = input('请输入你要生成的数量，一定要是整数，本问题不会进行差错检测,输入help查看帮助')
     com(m2_sys)
     if True != com(m2_sys):
-    sys.exit()
+        sys.exit()
 elif m1 == '2':
     print('无限模式下输入 exit 即可退出,输入help查看帮助')  
 
