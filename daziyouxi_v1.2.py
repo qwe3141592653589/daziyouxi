@@ -55,8 +55,7 @@ if m2 == '1':
     except ValueError:
         print('你输入的不是数字')
         sys.exit()
-
-elif m1 == '2':
+elif m2 == '2':
     print('无限模式下输入 exit 即可退出,输入help查看帮助')  
 
 #随机生成器
@@ -117,7 +116,8 @@ def abc(a):
             return temp1
 
 #主程序
-def game():
+def game(m1,r,e,t,everynum,help):
+    global m2;a;ABC_list;abc_list;temp1;temp2;e;m2_sys
     if m1 == '1':
         m1 = 'a'
     elif m1 == '2':
@@ -132,7 +132,6 @@ def game():
         m1 = 'Aa1'
     elif m1 == '7':
         m1 = 'Aa'
-    global m2;m1;a;ABC_list;abc_list;temp1;temp2;r;e;t;m2_sys;everynum;help
     print('游戏开始')
     if m2 == '2':
         while True:
@@ -178,4 +177,5 @@ def game():
         if t < e:
             for i in range(5):
                 print('菜！就多练，以前是以前，现在是现在！')
+game(m1,r,e,t,everynum,help)
 print('运行结束')
