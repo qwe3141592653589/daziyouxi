@@ -7,7 +7,7 @@
 # m1 = 键入的类型，类型见生成器类型
 # m2 = 键入的模式，1 = 有限生成 2 = 无限生成
 # r = 返回内容
-# e = 错误数量)
+# e = 错误数量
 # t = 正确数量
 # m2_sys 有限生成数量
 # temp_r 临时数据-用户游戏开始时输入的内容
@@ -35,7 +35,7 @@ help = '支持的指令有exit(退出) help(帮助),选择模式(输入序号前
 #预备主程序
 import random
 import sys
-print('欢迎使用打字游戏v1.1')
+print('欢迎使用打字游戏v1.22')
 print('注意：大小写敏感，游玩前检查caps lock的状态')
 print(help)
 m1 = input('生成类型 1.仅小写 2.仅大写 3.仅数字 4.数字+大写 5.数字+小写 6.全混 7.大小写混合')
@@ -51,9 +51,12 @@ if m2 != '1' and m2 != '2':
 if m2 == '1':
     m2_sys = input('请输入你要生成的数量，一定要是整数，本问题不会进行差错检测,输入help查看帮助')
     try:
-        int(m2_sys)
+        m2_sys = int(m2_sys)
     except ValueError:
         print('你输入的不是数字')
+        sys.exit()
+    if m2_sys <= 0:
+        print('数量必须是正整数，请重新运行')
         sys.exit()
 elif m2 == '2':
     print('无限模式下输入 exit 即可退出,输入help查看帮助')  
@@ -109,7 +112,7 @@ def abc(a):
             temp1 = random.randint(0,25)
             return abc_list[temp1]
         elif temp2 == 2:
-            temp1 = random.randint(0,25)
+            temp2 = random.randint(0,25)
             return ABC_list[temp2]
         elif temp2 == 3:
             temp1 = random.randint(0,9)
@@ -117,7 +120,7 @@ def abc(a):
 
 #主程序
 def game(m1,r,e,t,everynum,help):
-    global m2;a;ABC_list;abc_list;temp1;temp2;e;m2_sys
+    global m2, a, ABC_list, abc_list, temp1, temp2, m2_sys
     if m1 == '1':
         m1 = 'a'
     elif m1 == '2':
@@ -155,11 +158,11 @@ def game(m1,r,e,t,everynum,help):
                 print('错误','目前正确数量:',t,'错误数量:',e)
     elif m2 == '1':
         print('目前是有限模式，当设定的数量达到时自动退出，提前退出请键入exit','设定量为:',m2_sys)
-        for i in range(int(m2_sys)):
+        for i in range(m2_sys):
             r = abc(m1)
             temp_r = input(r)
             if 'exit' == str(temp_r):
-                print('你打了',everynum,'个字母或数字,其中正确:',t,'错误:',e,'剩余:',int(m2_sys)-everynum,'总量:',m2_sys)
+                print('你打了',everynum,'个字母或数字,其中正确:',t,'错误:',e,'剩余:',m2_sys-everynum,'总量:',m2_sys)
                 print('游戏结束')
                 if t < e:
                     for i in range(5):
@@ -168,11 +171,11 @@ def game(m1,r,e,t,everynum,help):
             if str(r) == str(temp_r):
                 t += 1
                 everynum += 1
-                print('正确','目前正确数量:',t,'错误数量:',e,'已打:',everynum,'剩余:',int(m2_sys)-everynum,'总量:',m2_sys)
+                print('正确','目前正确数量:',t,'错误数量:',e,'已打:',everynum,'剩余:',m2_sys-everynum,'总量:',m2_sys)
             else:
                 e += 1
                 everynum += 1
-                print('错误','目前正确数量:',t,'错误数量:',e,'已打:',everynum,'剩余:',int(m2_sys)-everynum,'总量:',m2_sys)
+                print('错误','目前正确数量:',t,'错误数量:',e,'已打:',everynum,'剩余:',m2_sys-everynum,'总量:',m2_sys)
         print('恭喜！完成了目标','已打:',everynum,'总量:',m2_sys,'正确数量:',t,'错误数量:',e)
         if t < e:
             for i in range(5):
